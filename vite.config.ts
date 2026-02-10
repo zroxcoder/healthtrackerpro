@@ -3,7 +3,6 @@ import { fileURLToPath } from "url";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import { viteSingleFile } from "vite-plugin-singlefile";
 import { VitePWA } from "vite-plugin-pwa";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -11,14 +10,13 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [
-    react(),
-    tailwindcss(),
-    viteSingleFile(),
-    VitePWA({
-      registerType: "autoUpdate",      // auto-update SW
-      injectRegister: 'auto',          // injects register script into index.html
+    react(),          // React support
+    tailwindcss(),    // TailwindCSS support
+    VitePWA({         // PWA plugin
+      registerType: "autoUpdate",  // auto-update SW
+      injectRegister: 'auto',      // injects SW registration into index.html
       workbox: {
-        cleanupOutdatedCaches: true,   // remove old caches automatically
+        cleanupOutdatedCaches: true,
       },
       manifest: {
         name: "Health Tracker Pro",
