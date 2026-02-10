@@ -10,14 +10,12 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [
-    react(),          // React support
-    tailwindcss(),    // TailwindCSS support
-    VitePWA({         // PWA plugin
-      registerType: "autoUpdate",  // auto-update SW
-      injectRegister: 'auto',      // injects SW registration into index.html
-      workbox: {
-        cleanupOutdatedCaches: true,
-      },
+    react(),
+    tailwindcss(),
+    VitePWA({
+      registerType: "autoUpdate",
+      injectRegister: 'auto',
+      workbox: { cleanupOutdatedCaches: true },
       manifest: {
         name: "Health Tracker Pro",
         short_name: "HealthTracker",
@@ -33,8 +31,6 @@ export default defineConfig({
     })
   ],
   resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
+    alias: { "@": path.resolve(__dirname, "src") },
   },
 });
